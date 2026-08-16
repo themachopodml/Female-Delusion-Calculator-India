@@ -1,19 +1,24 @@
-/* IN Female Delusion Calculator data layer
+/* KL FemDelCalc / India data layer
    by @themachopodml
 
    EMPIRICAL BASE:
-   - MoHFW / National Commission on Population: Population Projection Report 2011–2036.
-   - Census of India 2011 C-01/C-02/C-08/C-14/PCA.
-   - MoSPI PLFS 2023–24.
-   - NFHS-5, 2019–21.
+   - Census of India 2011 remains the latest completed national population census.
+   - Government of India Population Projection Report 2011–2036 for the demographic base.
+   - MoSPI PLFS Annual Report 2025 for the latest national employment and earnings release.
+   - MoHFW / IIPS NFHS-6 (2023–24), released May 2026, for the latest national household,
+     health and anthropometric indicators.
+   - Census 2027 is now being conducted in two phases; its final population enumeration
+     results are not yet available and therefore are NOT substituted into the calculator.
 
-   IMPORTANT: This file separates published population inputs from model factors.
-   Model factors are NOT official statistics and are labelled as such in the UI.
+   IMPORTANT: Published inputs are kept separate from model factors. Exact national
+   intersections of age + height + income + education + employment + religion + assets
+   are not published in one official table, so the calculator remains a scarcity model.
 */
 
 const DATA = {
   year: 2026,
-  projectedMalePopulationThousands: 732075,
+  // Sum of the calculator's 20–70 male age bands below. This is NOT total male population.
+  projectedMalePopulation20_70Thousands: 492374,
   ageBands: [
     {min:20,max:24,male:64463000,label:'20–24'},
     {min:25,max:29,male:66201000,label:'25–29'},
@@ -27,14 +32,15 @@ const DATA = {
     {min:65,max:69,male:19954000,label:'65–69'},
     {min:70,max:70,male:31924000,label:'70+'}
   ],
-  // Height is an input envelope. It is intentionally not called a national groom record.
+  // Height is an input envelope. India has no authoritative national registry of
+  // shortest/tallest wedding grooms, so this is deliberately treated as modelled.
   heights: [140,145,150,155,160,165,170,175,180,185,190,195,200,205,210],
-  // Transparent modelled height survival factors, not official height percentiles.
   heightModel: {140:1,145:.99,150:.96,155:.90,160:.78,165:.62,170:.45,175:.29,180:.17,185:.09,190:.045,195:.020,200:.008,205:.003,210:.001},
-  plfsMaleRegularMonthly: 22375,
-  plfsMaleUrbanRegularMonthly: 26105,
+  // Latest PLFS national regular wage/salary male averages for context.
+  plfs2025MaleRegularMonthly: {rural:19300,urban:27973,combined:24217},
   model: {
     education: {any:1, higherSecondary:.78, graduate:.48, postgraduate:.22, professional:.10},
+    // Income thresholds remain transparent scarcity-model factors, not official percentile tables.
     income: {any:1, 20000:.78, 30000:.55, 50000:.30, 100000:.12, 200000:.04},
     employment: {any:1, regular:.48, self:.35, govt:.22},
     finance: {any:1, invested:.65, substantial:.35},
@@ -42,16 +48,20 @@ const DATA = {
     assets: {any:1, house:.65, car:.25, business:.15, financial:.30},
     religion: {any:1, hindu:.80, muslim:.14, christian:.04, other:.02},
     caste: {any:1, nonScSt:.84, sc:.17, st:.09},
-    nonObese:.77
+    // NFHS-6 reports men overweight OR obese (BMI >=25) at 27.3% nationally.
+    // The calculator's 'Exclude Obese' switch uses the 72.7% non-overweight/non-obese
+    // share as a conservative proxy because NFHS-6 does not isolate obesity alone here.
+    nonObese: .727
   },
   sourceNotes: [
     'Census 2011 C-14: five-year age and sex composition.',
-    'MoHFW Population Projection Report 2011–2036: 2026 projected population by age and sex.',
+    'Government of India Population Projection Report 2011–2036: projected population by age and sex.',
     'Census 2011 C-02: marital status by age and sex.',
-    'Census 2011 C-01: population by religion and sex.',
+    'Census 2011 C-01: population by religious community and sex.',
     'Census 2011 C-08/C-08A: education by age and sex.',
     'Census 2011 PCA: population, sex, SC/ST and work-status indicators.',
-    'PLFS 2023–24: employment status and earnings.',
-    'NFHS-5 2019–21: anthropometry and household characteristics.'
+    'MoSPI PLFS Annual Report 2025: employment status and earnings.',
+    'MoHFW / IIPS NFHS-6 2023–24: latest national health, nutrition and household indicators.',
+    'Census 2027: current census exercise; final population enumeration data not yet available.'
   ]
 };
