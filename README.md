@@ -118,6 +118,12 @@ The result is a **modelled demographic scarcity estimate**. It is not a live dat
 
 **The Macho Pod** (`@themachopodml`) is a podcast and content platform based in Kerala, India. This calculator was built as an educational tool discussed on the show.
 
+### 🔗 Other Calculators
+
+- 🧮 [KL FemDelCalc](https://themachopodml.github.io/Female-Delusion-Calculator-Kerala)
+
+### 📣 Connect with The Macho Pod
+
 - 💬 [Send Videos to React](https://t.me/themachopodchat)
 - 🎙️ [Exclusive Uncensored Contents](https://rumble.com/c/c-7911504)
 - 📸 [DM reels for Reaction, Opinion](https://www.instagram.com/themachopodml/)
