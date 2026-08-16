@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="brand.svg" alt="The Macho Pod logo" width="180">
+</div>
+
 # 🧮 IN Female Delusion Calculator
 ### by [@themachopodml](https://github.com/themachopodml)
 
@@ -21,7 +25,7 @@ A statistically-grounded, interactive web calculator that helps users understand
 
 **Viewport-fitted desktop layout** — on PC, the calculator is arranged as a dense futuristic dashboard intended to fit inside a single browser viewport without normal page scrolling. The results panel remains visible alongside the preference controls.
 
-**Mobile responsive design** — on smaller screens, the dashboard gracefully changes to a scrollable single-column layout with larger touch targets. Because phones are not desktop monitors, despite what responsive-design frameworks seem to believe.
+**Mobile responsive design** — on smaller screens, the dashboard gracefully changes to a scrollable single-column layout with larger touch targets.
 
 **Interactive range controls** — age and height use draggable dual-handle sliders. Income uses a stepped LPA slider with selectable thresholds ranging from 1 LPA through crore, billion and trillion-level thresholds to infinity.
 
