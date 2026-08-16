@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="IN Female Delusion Calculator by @themachopodml. A transparent demographic model using Indian government data and explicitly labelled assumptions.">
+  <title>IN Female Delusion Calculator by @themachopodml</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="noise" aria-hidden="true"></div>
+<header class="topbar">
+  <a class="brand" href="#top" aria-label="IN Female Delusion Calculator home">
+    <img src="brand.svg" alt="IN calculator logo" class="brand-logo">
+    <span><b>IN Female Delusion Calculator</b><small>by @themachopodml</small></span>
+  </a>
+  <div class="top-actions"><button id="shareBtn" class="ghost">Share</button><button id="resetBtn" class="ghost">Reset</button></div>
+</header>
+<main id="top" class="shell">
+  <section class="hero">
+    <div class="eyebrow">DEMOGRAPHIC REALITY ENGINE · INDIA</div>
+    <h1>Build my King</h1>
+    <p>Set your standards. The engine estimates how large the matching male pool is, using government demographic data where available and clearly labelled model assumptions where official intersection data does not exist.</p>
+    <div class="hero-pills"><span>2026 population projection</span><span>2011 Census backbone</span><span>PLFS 2023–24 earnings</span><span>Transparent assumptions</span></div>
+  </section>
+
+  <div class="layout">
+    <section class="card form-card">
+      <div class="section-head"><div><span class="step">01</span><h2>Core filters</h2></div><span class="data-badge">EMPIRICAL + MODELLED</span></div>
+      <div class="grid two">
+        <fieldset><legend>Age range <em>up to 70+</em></legend><div class="range-row"><label>Minimum<select id="ageMin"></select></label><label>Maximum<select id="ageMax"></select></label></div><p class="hint">Age-band population uses the Government of India 2011–2036 population projection series.</p></fieldset>
+        <fieldset><legend>Height range <em>cm</em></legend><div class="range-row"><label>Minimum<select id="heightMin"></select></label><label>Maximum<select id="heightMax"></select></label></div><p class="hint warning">No authoritative national database of “shortest/tallest wedding groom” exists. The height range is therefore an input envelope, not a claimed record.</p></fieldset>
+      </div>
+      <div class="grid two">
+        <fieldset><legend>Marital status</legend><div class="checks"><label><input type="checkbox" name="marital" value="never" checked><span>Never married</span></label><label><input type="checkbox" name="marital" value="married"><span>Married</span></label></div><p class="hint">Census 2011 C-02 provides age/sex/marital-status counts. The engine maps the selected status to the relevant age band.</p></fieldset>
+        <fieldset><legend>Nationality / location</legend><div class="checks"><label><input type="checkbox" name="location" value="resident" checked><span>India resident</span></label><label><input type="checkbox" name="location" value="nri"><span>Indian abroad / NRI</span></label><label><input type="checkbox" name="location" value="foreign"><span>Foreigner</span></label></div><p class="hint warning">There is no official single dataset for “eligible foreign men seeking Indian marriage”. International selections are shown as coverage-limited, not fabricated population counts.</p></fieldset>
+      </div>
+    </section>
+
+    <section class="card form-card">
+      <div class="section-head"><div><span class="step">02</span><h2>Education & earning power</h2></div><span class="data-badge">PLFS / CENSUS</span></div>
+      <div class="grid two">
+        <fieldset><legend>Education</legend><label class="select-wrap"><span>Minimum qualification</span><select id="education"><option value="1">Any / school or above</option><option value="0.78">Higher secondary+</option><option value="0.48">Graduate+</option><option value="0.22">Postgraduate+</option><option value="0.10">Professional / technical degree+</option></select></label><p class="hint">Census C-08/C-08A provides education by age and sex. The factors are modelled from those distributions, not presented as exact intersections.</p></fieldset>
+        <fieldset><legend>Monthly personal income</legend><label class="select-wrap"><span>Minimum income</span><select id="income"><option value="1">Any reported income</option><option value="0.78">₹20,000+</option><option value="0.55">₹30,000+</option><option value="0.30">₹50,000+</option><option value="0.12">₹1,00,000+</option><option value="0.04">₹2,00,000+</option></select></label><p class="hint">PLFS 2023–24 reports average monthly regular wage/salary earnings of ₹22,375 for men, all-India, rural+urban, Apr–Jun 2024.</p></fieldset>
+      </div>
+      <div class="grid two">
+        <fieldset><legend>Employment</legend><div class="checks"><label><input type="checkbox" name="work" value="1" checked><span>Any employment</span></label><label><input type="checkbox" name="work" value="0.48"><span>Regular salaried</span></label><label><input type="checkbox" name="work" value="0.35"><span>Self-employed / business</span></label><label><input type="checkbox" name="work" value="0.22"><span>Government / PSU target</span></label></div><p class="hint">Employment shares come from PLFS. “Government / PSU” is a modelled premium filter because a national male-only intersection for your exact criteria is not published as one statistic.</p></fieldset>
+        <fieldset><legend>Financial profile</legend><div class="checks"><label><input type="checkbox" name="finance" value="1" checked><span>Income only</span></label><label><input type="checkbox" name="finance" value="0.65"><span>Own financial assets</span></label><label><input type="checkbox" name="finance" value="0.35"><span>Substantial investments / securities</span></label></div><p class="hint warning">Individual wealth distribution is not equivalent to household bank-account ownership. These are explicit model assumptions.</p></fieldset>
+      </div>
+    </section>
+
+    <section class="card form-card">
+      <div class="section-head"><div><span class="step">03</span><h2>Social filters</h2></div><span class="data-badge">CENSUS 2011</span></div>
+      <div class="grid two">
+        <fieldset><legend>Religion</legend><div class="checks"><label><input type="checkbox" name="religion" value="1" checked><span>Any religion</span></label><label><input type="checkbox" name="religion" value="0.80"><span>Hindu</span></label><label><input type="checkbox" name="religion" value="0.14"><span>Muslim</span></label><label><input type="checkbox" name="religion" value="0.04"><span>Christian</span></label><label><input type="checkbox" name="religion" value="0.02"><span>Sikh / Buddhist / Jain / other</span></label></div><p class="hint">Census C-01 gives population by sex and religion. Percentages here are rounded national shares used as a screening factor.</p></fieldset>
+        <fieldset><legend>Caste / social category</legend><div class="checks"><label><input type="checkbox" name="caste" value="1" checked><span>Any category</span></label><label><input type="checkbox" name="caste" value="0.84"><span>Non-SC / non-ST</span></label><label><input type="checkbox" name="caste" value="0.17"><span>Scheduled Caste (SC)</span></label><label><input type="checkbox" name="caste" value="0.09"><span>Scheduled Tribe (ST)</span></label><label><input type="checkbox" name="caste" value="1"><span>Open to another caste</span></label></div><p class="hint">SC/ST are census-defined categories. “Same caste” is not a single national Census category, so “another caste” is treated as a preference rule, not a fabricated percentage.</p></fieldset>
+      </div>
+    </section>
+
+    <section class="card form-card">
+      <div class="section-head"><div><span class="step">04</span><h2>Body & lifestyle</h2></div><span class="data-badge">NFHS-5 + MODEL</span></div>
+      <div class="grid two">
+        <fieldset><legend>Body composition</legend><div class="checks"><label><input type="checkbox" name="body" value="1" checked><span>Any body type</span></label><label><input type="checkbox" name="body" value="0.70"><span>Normal BMI target</span></label><label><input type="checkbox" name="body" value="0.30"><span>Lean / athletic target</span></label><label><input id="nonObese" type="checkbox"><span>Exclude obese</span></label></div><p class="hint">NFHS-5 measures BMI/overweight-obesity at population level. Exact age-specific male intersections are not assumed unless published.</p></fieldset>
+        <fieldset><legend>Assets</legend><div class="checks"><label><input type="checkbox" name="asset" value="1" checked><span>No asset requirement</span></label><label><input type="checkbox" name="asset" value="0.65"><span>Own house</span></label><label><input type="checkbox" name="asset" value="0.25"><span>Own car</span></label><label><input type="checkbox" name="asset" value="0.15"><span>Own business</span></label><label><input type="checkbox" name="asset" value="0.30"><span>Financial assets</span></label></div><p class="hint warning">Asset filters are household/wealth proxies. They are deliberately labelled as modelled rather than pretending India publishes the exact male individual intersection.</p></fieldset>
+      </div>
+    </section>
+
+    <section class="card action-card"><button id="calculateBtn" class="primary">CALCULATE MY KING POOL <span>→</span></button><p>Calculation is an estimate of statistical scarcity, not a claim that a specific number of real people are actively available for marriage.</p></section>
+  </div>
+
+  <section id="results" class="results card">
+    <div class="result-top"><div><div class="eyebrow">RESULT</div><h2>Your estimated King pool</h2></div><div id="confidence" class="confidence">WAITING FOR INPUT</div></div>
+    <div class="result-grid"><div class="big-number" id="count">—</div><div><div class="percent" id="percent">—</div><p id="resultText">Configure the filters above and run the engine.</p></div></div>
+    <div class="meter"><div id="meterBar"></div></div>
+    <div id="tags" class="tags"></div>
+    <div class="breakdown" id="breakdown"></div>
+    <div class="method"><b>How to read this:</b> Empirical population bases come from official Census / MoHFW / PLFS / NFHS sources. Where India does not publish the requested cross-tabulation, the calculator uses a visible model factor. Multiplying independent percentages is an approximation and does not prove the real-world intersection.</div>
+  </section>
+
+  <footer>
+    <div><b>IN Female Delusion Calculator</b> · by @themachopodml</div>
+    <div class="sources"><a href="https://censusindia.gov.in/" target="_blank" rel="noopener">Census of India</a><a href="https://www.mohfw.gov.in/" target="_blank" rel="noopener">MoHFW</a><a href="https://www.mospi.gov.in/" target="_blank" rel="noopener">MoSPI / PLFS</a><a href="https://dhsprogram.com/" target="_blank" rel="noopener">NFHS-5</a></div>
+  </footer>
+</main>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
