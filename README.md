@@ -37,12 +37,14 @@ A statistically-grounded interactive calculator that estimates how rare a male p
 
 ## 📊 Data Sources & Current Update Status
 
-The data layer has been refreshed to reflect the latest authorised national releases available as of August 2026. Census 2011 remains the latest completed national population census, so it is still used for historical demographic classifications. Census 2027 is now underway, but its final population-enumeration results are not yet available and therefore are not substituted into the calculator. The Government has scheduled population enumeration for February 2027. citeturn0search12turn0search5
+The data layer has been refreshed to reflect the latest authorised national releases available as of August 2026. Census 2011 remains the latest completed national population census, so it is still used for historical demographic classifications. Census 2027 is now underway, but its final population-enumeration results are not yet available and therefore are not substituted into the calculator. The Government has scheduled population enumeration for February 2027.
+
+Official references: [Census 2027 — Office of the Registrar General & Census Commissioner, India](https://censusindia.gov.in/), [PLFS 2025 — MoSPI](https://mospi.gov.in/), [NFHS-6 2023–24 — MoHFW](https://www.mohfw-dohfw.gov.in/documents/publications).
 
 - **Census of India 2011** — C-01 religion/sex, C-02 marital status by age/sex, C-08/C-08A education, C-14 age/sex composition and Primary Census Abstract.
 - **Government of India Population Projection Report 2011–2036** — projected age/sex demographic base used for the calculator's 2026 age bands.
-- **MoSPI, PLFS Annual Report 2025** — latest annual employment and earnings release. The report covers earnings of regular wage/salaried employees and state/UT tables. citeturn3search1
-- **MoHFW / IIPS, NFHS-6 2023–24** — latest national household, health and anthropometric survey release, published in May 2026. citeturn2search0turn5search18
+- **MoSPI, PLFS Annual Report 2025** — latest annual employment and earnings release. The report covers earnings of regular wage/salaried employees and state/UT tables.
+- **MoHFW / IIPS, NFHS-6 2023–24** — latest national household, health and anthropometric survey release, published in May 2026.
 
 The calculator does **not** claim that an official government table contains the exact intersection of age + height + income + education + employment + religion + caste + assets + marital status + location. Where that intersection is unavailable, the value is explicitly modelled.
 
@@ -50,7 +52,9 @@ The demographic base is therefore an **estimated statistical population base**, 
 
 ### Kerala data update reviewed
 
-The Kerala source stack has also moved forward. Kerala State Planning Board's **Economic Review 2025** and the **Kerala Development Report 2026** are now available. Those reports are useful for the Kerala-specific calculator, but they are not substituted into this India-wide model because state-specific economic values would not be valid national inputs. citeturn0search1turn0search3
+The Kerala source stack has also moved forward. Kerala State Planning Board's **Economic Review 2025** and the **Kerala Development Report 2026** are now available. Those reports are useful for the Kerala-specific calculator, but they are not substituted into this India-wide model because state-specific economic values would not be valid national inputs.
+
+Official references: [Kerala Economic Review 2025](https://spb.kerala.gov.in/en/7036/), [Kerala State Planning Board](https://spb.kerala.gov.in/en/).
 
 ---
 
@@ -70,9 +74,9 @@ This multiplication assumes enough independence between characteristics for a sc
 
 **Height limitation:** India has no authoritative national registry of the shortest or tallest wedding groom. The height envelope is therefore a calculator-defined model input, not an official groom record.
 
-**Income limitation:** PLFS provides employment and earnings statistics, but it does not publish a complete national percentile table for every annual personal-income threshold used by this calculator. The high-income tiers are therefore scarcity-model assumptions, not official billionaire/trillionaire counts. PLFS 2025 is used as the latest earnings reference. citeturn3search1
+**Income limitation:** PLFS provides employment and earnings statistics, but it does not publish a complete national percentile table for every annual personal-income threshold used by this calculator. The high-income tiers are therefore scarcity-model assumptions, not official billionaire/trillionaire counts.
 
-**NFHS-6 limitation:** the adult BMI indicator reports overweight or obesity together at BMI ≥25. The calculator does not pretend that this is an obesity-only statistic. citeturn5search18
+**NFHS-6 limitation:** the adult BMI indicator reports overweight or obesity together at BMI ≥25. The calculator does not pretend that this is an obesity-only statistic.
 
 ---
 
