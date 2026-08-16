@@ -7,7 +7,7 @@
 
 > *"How rare is your King, really?"*
 
-A statistically-grounded, interactive web calculator that estimates how rare a male profile can become when multiple preferences are combined. It uses Indian government demographic and survey sources where available and clearly labels modelled assumptions where an exact national intersection is not published.
+A statistically-grounded interactive calculator that estimates how rare a male profile can become when multiple preferences are combined. It uses Indian government demographic and survey sources where available and clearly labels modelled assumptions where an exact national intersection is not published.
 
 **🔗 Live Site:** [themachopodml.github.io/Female-Delusion-Calculator-India](https://themachopodml.github.io/Female-Delusion-Calculator-India)
 
@@ -15,23 +15,19 @@ A statistically-grounded, interactive web calculator that estimates how rare a m
 
 ## 🌟 Features
 
-**12+ Preference Categories** covering age, height, minimum qualification, annual personal income, employment, religion, marital status, nationality/location, body type, asset requirements, financial profile and lifestyle preferences.
+**12+ Preference Categories** covering age, height, minimum qualification, annual personal income, employment, religion, marital status, nationality/location, body type, asset requirements, caste/social category and lifestyle preferences.
 
-**👑 Build My King** — the main calculator experience. Age and height use draggable range controls. Income uses a stepped LPA slider with selectable thresholds from 1 LPA through crore, billion and trillion-level thresholds to infinity.
+**👑 Build My King** — age and height use draggable range controls. Age runs from 21 to 70+, while height uses the calculator's configurable national height envelope. Annual personal income uses stepped LPA thresholds from 1 LPA through crore, billion and trillion-level scarcity tiers.
 
-**🎓 Six education thresholds** — Primary Education, Secondary Education, Higher Secondary Education, Bachelors Degree, Masters Degree and PHD / Research Level, plus Any Education.
-
-**💼 Employment Status** — Govt Job, Private Sector, Self-Employed / Business, Professional / Freelancer, NRI / Gulf Worker and Defence / Paramilitary.
+**💰 Annual Personal Income** — the former monthly-income field is now explicitly annual personal income, matching the newer FemDelCalc interface.
 
 **🏠 Asset Requirements** — Own House, Own Car, Own Business, Financial Assets, Own Land / Plot and Two-Wheeler.
 
-**🌿 Lifestyle Preferences** — Non-Smoker, Non-Drinker, Vegetarian, Fitness Conscious, Religiously Active and No Tobacco Use.
+**🚫 Exclude Obese** — retained as a calculator filter. NFHS-6 reports men who are overweight or obese together at BMI ≥25; the calculator therefore uses the non-overweight/non-obese share as a conservative proxy and does not claim an obesity-only official percentage.
 
-**🐱 Cat Food Scarcity Rating** — the result is presented using the calculator's 10-can scarcity scale. The lower the modelled match percentage, the more cans are shown.
+**🐱 Cat Food Scarcity Rating** — the result is presented using a 10-can scarcity scale. Lower modelled match percentage means more cans and greater statistical scarcity.
 
-**Viewport-fitted desktop layout** — the calculator uses a compact three-column dashboard intended to fit a desktop browser viewport without normal page scrolling. The results panel remains visible alongside the controls.
-
-**Tooltip guidance** — explanatory notes have been moved behind `?` controls beside section headings so the interface stays clean and readable.
+**Readable dashboard** — typography, controls and result values have been enlarged substantially for easier reading while retaining the futuristic dark interface.
 
 **Mobile responsive design** — smaller screens switch to a normal scrollable layout with larger touch targets.
 
@@ -39,50 +35,44 @@ A statistically-grounded, interactive web calculator that estimates how rare a m
 
 ---
 
-## 📊 Data Sources
+## 📊 Data Sources & Current Update Status
 
-The calculator separates published empirical inputs from model assumptions. It does **not** claim that an exact national cross-tabulation exists when it is not published.
+The data layer has been refreshed to reflect the latest authorised national releases available as of August 2026. Census 2011 remains the latest completed national population census, so it is still used for historical demographic classifications. Census 2027 is now underway, but its final population-enumeration results are not yet available and therefore are not substituted into the calculator. The Government has scheduled population enumeration for February 2027. citeturn0search12turn0search5
 
-The original sources used by the India calculator are:
+- **Census of India 2011** — C-01 religion/sex, C-02 marital status by age/sex, C-08/C-08A education, C-14 age/sex composition and Primary Census Abstract.
+- **Government of India Population Projection Report 2011–2036** — projected age/sex demographic base used for the calculator's 2026 age bands.
+- **MoSPI, PLFS Annual Report 2025** — latest annual employment and earnings release. The report covers earnings of regular wage/salaried employees and state/UT tables. citeturn3search1
+- **MoHFW / IIPS, NFHS-6 2023–24** — latest national household, health and anthropometric survey release, published in May 2026. citeturn2search0turn5search18
 
-- **Census of India 2011** — C-01 religion and sex; C-02 marital status by age and sex; C-08/C-08A education; C-14 age/sex composition; Primary Census Abstract (PCA) population, sex, SC/ST and work-status indicators.
-- **Government of India / Ministry of Health & Family Welfare / National Commission on Population** — Population Projection Report 2011–2036, including projected population by age and sex used for the demographic base.
-- **Ministry of Statistics & Programme Implementation (MoSPI), PLFS 2023–24** — employment and earnings indicators.
-- **National Family Health Survey (NFHS-5), 2019–21** — anthropometric and household indicators used where relevant to body and asset modelling.
+The calculator does **not** claim that an official government table contains the exact intersection of age + height + income + education + employment + religion + caste + assets + marital status + location. Where that intersection is unavailable, the value is explicitly modelled.
 
-The calculator does **not** present a fabricated official statistic for the number of Indian men actively available for marriage, foreign men seeking Indian marriage, exact individual wealth intersections, or a government-certified tallest wedding groom. Those dimensions are modelled where necessary.
+The demographic base is therefore an **estimated statistical population base**, not a live matrimonial-market database.
 
-The demographic base is therefore an **estimated male population base**, not a live matrimonial-market database.
+### Kerala data update reviewed
+
+The Kerala source stack has also moved forward. Kerala State Planning Board's **Economic Review 2025** and the **Kerala Development Report 2026** are now available. Those reports are useful for the Kerala-specific calculator, but they are not substituted into this India-wide model because state-specific economic values would not be valid national inputs. citeturn0search1turn0search3
 
 ---
 
 ## ⚙️ How the Calculation Works
 
-Understanding the math behind the result is necessary if the output is going to be treated as more than a dramatic number on a dark screen.
+Within OR-based preference sections, selecting multiple acceptable alternatives expands the accepted pool. Across preference sections, the logic is AND, so age, height, education, income, employment, religion, body type, marital status, location, assets and lifestyle conditions are combined into a modelled intersection.
 
-**Within OR-based preference sections**, selecting multiple acceptable alternatives expands the accepted pool. For example, selecting multiple employment types accepts those types rather than requiring all of them simultaneously.
-
-**Across preference sections, the logic is AND** — age, height, education, income, employment, religion, body type, marital status, location, assets, financial profile and lifestyle conditions are combined into one modelled intersection.
-
-**Age** is estimated from the Government of India projected male age bands, with 21 as the lower calculator boundary and 70+ as the upper band.
-
-**Height** uses a modelled Indian male height distribution. No Indian Census table provides the exact requested national height intersection, and there is no authoritative national registry of the shortest or tallest wedding groom. The 251 cm upper envelope is therefore treated as a historical reported height envelope, not an official groom record.
-
-**Income** is expressed entirely as annual LPA thresholds:
-
-`1 LPA → 2 → 3 → 5 → 10 → 15 → 25 → 50 LPA → 1 Cr → 10 Cr → 25 Cr → 50 Cr → 75 Cr → 1B → 10B → 50B → 1 Trillion → ∞`
-
-The extreme-income tiers beyond normal survey coverage are **scarcity model assumptions**, not PLFS measurements of billionaires or trillionaires.
-
-A simplified version of the screening formula is:
+A simplified screening formula is:
 
 ```text
 Final % = Age% × Height% × Education% × Income% × Employment%
         × Religion% × Body% × Marital% × Location%
-        × Financial% × Asset% × Lifestyle%
+        × Asset factors × Lifestyle factors
 ```
 
 This multiplication assumes enough independence between characteristics for a screening model. Real-world characteristics are correlated, so the result is an estimate rather than an exact Census intersection.
+
+**Height limitation:** India has no authoritative national registry of the shortest or tallest wedding groom. The height envelope is therefore a calculator-defined model input, not an official groom record.
+
+**Income limitation:** PLFS provides employment and earnings statistics, but it does not publish a complete national percentile table for every annual personal-income threshold used by this calculator. The high-income tiers are therefore scarcity-model assumptions, not official billionaire/trillionaire counts. PLFS 2025 is used as the latest earnings reference. citeturn3search1
+
+**NFHS-6 limitation:** the adult BMI indicator reports overweight or obesity together at BMI ≥25. The calculator does not pretend that this is an obesity-only statistic. citeturn5search18
 
 ---
 
@@ -90,17 +80,17 @@ This multiplication assumes enough independence between characteristics for a sc
 
 | Cans | Match % Range | Label |
 |------|--------------|-------|
-| 10/10 | > 0% to ≤ 0.01% | Single Origin Mythic Blend 🦄 |
-| 9/10 | > 0.01% to ≤ 0.1% | Collector's Edition 🏛 |
-| 8/10 | > 0.1% to ≤ 0.5% | Rare Reserve 💎 |
-| 7/10 | > 0.5% to ≤ 1% | Small Batch Import 🚢 |
-| 6/10 | > 1% to ≤ 2% | Limited Batch 📦 |
-| 5/10 | > 2% to ≤ 5% | Specialty Store 🏬 |
-| 4/10 | > 5% to ≤ 10% | Premium Aisle 🌟 |
-| 3/10 | > 10% to ≤ 20% | Decent Brand 🥫 |
-| 2/10 | > 20% to ≤ 50% | Standard Shelf Stock 🏪 |
-| 1/10 | > 50% | Bulk Bin Basics 🛒 |
-| 0/10 | Exactly 0% | Out of Stock — Permanently 😿 |
+| 10/10 | > 0% to ≤ 0.01% | Single Origin Mythic Blend |
+| 9/10 | > 0.01% to ≤ 0.1% | Collector's Edition |
+| 8/10 | > 0.1% to ≤ 0.5% | Rare Reserve |
+| 7/10 | > 0.5% to ≤ 1% | Small Batch Import |
+| 6/10 | > 1% to ≤ 2% | Limited Batch |
+| 5/10 | > 2% to ≤ 5% | Specialty Store |
+| 4/10 | > 5% to ≤ 10% | Premium Aisle |
+| 3/10 | > 10% to ≤ 20% | Decent Brand |
+| 2/10 | > 20% to ≤ 50% | Standard Shelf Stock |
+| 1/10 | > 50% | Bulk Bin Basics |
+| 0/10 | Exactly 0% | Out of Stock — Permanently |
 
 *More cans = scarcer man · Fewer cans = more common*
 
@@ -108,7 +98,7 @@ This multiplication assumes enough independence between characteristics for a sc
 
 ## ⚠️ Disclaimer
 
-This calculator is for **educational and self-reflection purposes only**. Real relationships involve many factors that demographics and statistics cannot capture — personality, chemistry, timing, values, attraction, family circumstances, geography and individual choice among them. The goal is to provide perspective on statistical scarcity, not to prescribe who anyone should or shouldn't date.
+This calculator is for **educational and self-reflection purposes only**. Real relationships involve factors that demographics and statistics cannot capture, including personality, chemistry, timing, values, attraction, family circumstances, geography and individual choice.
 
 The result is a **modelled demographic scarcity estimate**. It is not a live dating-market population and does not measure willingness to marry, compatibility, attraction, availability or family approval. Figures may differ materially from real-world matrimonial outcomes because many requested intersections are not published in a single official dataset.
 
@@ -118,9 +108,12 @@ The result is a **modelled demographic scarcity estimate**. It is not a live dat
 
 **The Macho Pod** (`@themachopodml`) is a podcast and content platform based in Kerala, India. This calculator was built as an educational tool discussed on the show.
 
-### 🔗 Other Calculators
+### 🧮 In FemDelCalc
+
+This calculator is part of the **FemDelCalc** series by The Macho Pod.
 
 - 🧮 [KL FemDelCalc](https://themachopodml.github.io/Female-Delusion-Calculator-Kerala)
+- 🧮 [IN FemDelCalc](https://themachopodml.github.io/Female-Delusion-Calculator-India)
 
 ### 📣 Connect with The Macho Pod
 
